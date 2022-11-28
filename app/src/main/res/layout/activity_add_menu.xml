@@ -51,18 +51,11 @@
         android:orientation="vertical"
         android:paddingHorizontal="32dp">
 
-        <ImageView
-            android:id="@+id/img_user"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:src="@drawable/add_image" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/Gray" />
+            android:background="@color/Gray"
+            android:layout_marginTop="50dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,53 +63,56 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/id_addNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama"
                 android:textColorHint="@color/Gray"
                 android:layout_marginTop="10dp"/>
             <EditText
+                android:id="@+id/id_addHarga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Harga"
                 android:textColorHint="@color/Gray"
                 android:layout_marginTop="10dp"/>
             <EditText
+                android:id="@+id/id_addKategori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Deskripsi"
+                android:hint="Kategori (Makanan/Minuman/Cemilan)"
                 android:textColorHint="@color/Gray"
                 android:layout_marginTop="10dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kategori : "
-                    android:textSize="18dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/Gray"/>
-                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton android:id="@+id/radio_minuman"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Minuman"/>
-                    <RadioButton android:id="@+id/radio_makanan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Makanan"/>
-                    <RadioButton android:id="@+id/radio_cemilan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cemilan"/>
-                </RadioGroup>
-            </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Kategori : "-->
+<!--                    android:textSize="18dp"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:textColor="@color/Gray"/>-->
+<!--                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+<!--                    <RadioButton android:id="@+id/radio_minuman"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Minuman"/>-->
+<!--                    <RadioButton android:id="@+id/radio_makanan"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Makanan"/>-->
+<!--                    <RadioButton android:id="@+id/radio_cemilan"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Cemilan"/>-->
+<!--                </RadioGroup>-->
+<!--            </LinearLayout>-->
 
             <View
                 android:layout_width="match_parent"
@@ -125,7 +121,16 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/buttonTambah"
+            android:id="@+id/id_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Status"
+            android:gravity="center"
+            android:textColorHint="@color/FireOpal"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/id_buttonTambah"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
