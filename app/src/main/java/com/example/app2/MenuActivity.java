@@ -101,8 +101,10 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 //jika dipilih hapus
                                 hapusData(idx);
                                 callVolley();
+                                break;
                             case 1:
                                 //jika dipilih edit
+                                break;
                         }
                     }
                 }).show();
@@ -173,6 +175,7 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(MenuActivity.this, response, Toast.LENGTH_LONG).show();
+                        callVolley();
                     }
                 }, new Response.ErrorListener() {
             @Override
