@@ -9,8 +9,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +40,7 @@ import java.util.Map;
 public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private TextView tvTambahMenu;
+    private ImageView ivArrowBack;
 
     //Tampil Menu
     public static final String URL_SELECT = "http://192.168.112.3/CRUDVolley/projectmobile/select.php";
@@ -50,6 +54,14 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
     public static final String URL_DELETE = "http://192.168.112.3/CRUDVolley/projectmobile/delete.php";
     //End Delete Menu
 
+    //Edit Menu
+    public static final String URL_EDIT = "http://192.168.112.3/CRUDVolley/projectmobile/edit.php";
+    public static final String URL_INSERT = "http://192.168.112.3/CRUDVolley/projectmobile/insert.php";
+    LayoutInflater inflater;
+    EditText etId, etNama, etHarga, etKategori;
+    String s_id, s_nama, s_harga, s_kategori;
+    //End Edit Menu
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +69,20 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
         getSupportActionBar().hide();
 
         tvTambahMenu = findViewById(R.id.buttonTambahMenu);
+        ivArrowBack = findViewById(R.id.id_arrowBack);
 
         tvTambahMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent move = new Intent(MenuActivity.this, AddMenuActivity.class);
+                startActivity(move);
+            }
+        });
+
+        ivArrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent move = new Intent(MenuActivity.this, MainActivity.class);
                 startActivity(move);
             }
         });
@@ -104,6 +125,7 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 break;
                             case 1:
                                 //jika dipilih edit
+                                editData(idx);
                                 break;
                         }
                     }
@@ -197,4 +219,135 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
         queue.add(stringRequest);
     }
     //End Delete Menu
+
+    //Edit Menu
+    public void editData(String id){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+
+                            String idx = jObj.getString("id");
+                            String namax = jObj.getString("nama");
+                            String hargax = jObj.getString("harga");
+                            String kategorix = jObj.getString("kategori");
+
+                            dialogForm(idx,namax,hargax,kategorix,"UPDATE");
+
+                            adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            //JSON error
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MenuActivity.this, "Gagal koneksi ke server", Toast.LENGTH_LONG).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                //posting parameters ke post url
+                Map<String, String> params = new HashMap<String,String>();
+
+                params.put("id", id);
+                return params;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+    }
+
+    public void dialogForm(String id, String nama, String harga, String kategori, String button){
+        AlertDialog.Builder dialogForm = new AlertDialog.Builder(MenuActivity.this);
+        inflater = getLayoutInflater();
+        View viewDialog = inflater.inflate(R.layout.form_edit_menu, null);
+        dialogForm.setView(viewDialog);
+        dialogForm.setCancelable(true);
+        dialogForm.setTitle("Edit Menu");
+
+        etId = (EditText) viewDialog.findViewById(R.id.id_editId);
+        etNama = (EditText) viewDialog.findViewById(R.id.id_editNama);
+        etHarga = (EditText) viewDialog.findViewById(R.id.id_editHarga);
+        etKategori = (EditText) viewDialog.findViewById(R.id.id_editKategori);
+
+        if (id.isEmpty()) {
+            etId.setText(null);
+            etNama.setText(null);
+            etHarga.setText(null);
+            etKategori.setText(null);
+        } else {
+            etId.setText(id);
+            etNama.setText(nama);
+            etHarga.setText(harga);
+            etKategori.setText(kategori);
+        }
+
+        dialogForm.setPositiveButton(button, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                s_id = etId.getText().toString();
+                s_nama = etNama.getText().toString();
+                s_harga = etHarga.getText().toString();
+                s_kategori = etKategori.getText().toString();
+
+                simpan();
+                dialog.dismiss();
+            }
+        });
+        dialogForm.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+                etId.setText(null);
+                etNama.setText(null);
+                etHarga.setText(null);
+                etKategori.setText(null);
+            }
+        });
+        dialogForm.show();
+    }
+
+    public void simpan() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_INSERT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        callVolley();
+                        Toast.makeText(MenuActivity.this, response, Toast.LENGTH_LONG);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MenuActivity.this, "Gagal koneksi ke server", Toast.LENGTH_LONG);
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                //posting parameters ke post url
+                Map<String, String> params = new HashMap<String,String>();
+
+                if (s_id.isEmpty()){
+                    params.put("nama", s_nama);
+                    params.put("harga",s_harga);
+                    params.put("kategori", s_kategori);
+                    return params;
+                } else {
+                    params.put("id", s_id);
+                    params.put("nama", s_nama);
+                    params.put("harga",s_harga);
+                    params.put("kategori", s_kategori);
+                    return params;
+                }
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+    }
+    //End Edit Menu
 }

@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:padding="20dp">
         <EditText
-            android:id="@+id/id_editId"
+            android:id="@+id/id_id_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nama"
@@ -18,24 +18,38 @@
             android:layout_marginTop="10dp"
             android:visibility="gone"/>
         <EditText
-            android:id="@+id/id_editNama"
+            android:id="@+id/id_nama_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nama"
             android:textColorHint="@color/Gray"
             android:layout_marginTop="10dp"/>
         <EditText
-            android:id="@+id/id_editHarga"
+            android:id="@+id/id_harga_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Harga"
             android:textColorHint="@color/Gray"
             android:layout_marginTop="10dp"/>
         <EditText
-            android:id="@+id/id_editKategori"
+            android:id="@+id/id_kategori_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kategori (Makanan/Minuman/Cemilan)"
+            android:hint="Kategori"
+            android:textColorHint="@color/Gray"
+            android:layout_marginTop="10dp"/>
+        <EditText
+            android:id="@+id/id_lama_booking_kamar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lama boking kamar (per jam)"
+            android:textColorHint="@color/Gray"
+            android:layout_marginTop="10dp"/>
+        <EditText
+            android:id="@+id/id_biaya_booking_kamar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Biaya"
             android:textColorHint="@color/Gray"
             android:layout_marginTop="10dp"/>
     </LinearLayout>

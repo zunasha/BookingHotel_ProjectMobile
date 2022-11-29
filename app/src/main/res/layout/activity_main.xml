@@ -67,7 +67,7 @@
                 android:layout_weight="1">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/menu"
+                    android:id="@+id/id_menu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
@@ -108,6 +108,7 @@
                 android:layout_weight="1">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/id_transaksi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/YellowOrange"
@@ -124,21 +125,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="110dp"
+                        android:fontFamily="@font/rubik_bold"
                         android:gravity="center"
                         android:text="Transaksi"
                         android:textColor="@color/white"
                         android:textSize="26dp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/rubik_bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="170dp"
+                        android:fontFamily="@font/rubik"
                         android:gravity="center"
                         android:text="Lakukan Transaksi"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/rubik"/>
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
         </TableRow>

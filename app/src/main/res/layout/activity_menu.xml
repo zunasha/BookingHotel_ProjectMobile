@@ -76,7 +76,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/arrowBack"
+            android:id="@+id/id_arrowBack"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:foreground="?attr/selectableItemBackground"
