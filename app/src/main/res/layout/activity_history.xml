@@ -12,7 +12,7 @@
         android:id="@+id/toolbarPreviewUserMhs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="15dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,13 +38,22 @@
         </RelativeLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/SmoothBlack"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/id_swipe_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbarPreviewUserMhs"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp">
 
