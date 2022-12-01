@@ -35,7 +35,7 @@
             android:id="@+id/id_editKategori"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kategori (Makanan/Minuman/Cemilan)"
+            android:hint="Kategori"
             android:textColorHint="@color/Gray"
             android:layout_marginTop="10dp"/>
     </LinearLayout>

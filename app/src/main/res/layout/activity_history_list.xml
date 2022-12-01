@@ -34,8 +34,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/order_id"
+                android:id="@+id/id_order_id"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
@@ -80,131 +80,140 @@
                 app:layout_constraintStart_toEndOf="@+id/order_id_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/order_item_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="PESANAN"
-            android:textColor="#B0B0B0"
-            android:textSize="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-        <TextView
-            android:id="@+id/items"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Kopi Susu, Kopi Gula Aren"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_item_text" />
-
-        <TextView
-            android:id="@+id/orderedOnText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="WAKTU PEMBELIAN"
-            android:textColor="#B0B0B0"
-            android:textSize="10dp"
-            app:layout_constraintStart_toStartOf="@+id/order_item_text"
-            app:layout_constraintTop_toBottomOf="@+id/items" />
-
-
-        <TextView
-            android:id="@+id/order_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="20/04/1997"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/orderedOnText" />
-
-        <TextView
-            android:id="@+id/at"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="at"
-            app:layout_constraintBaseline_toBaselineOf="@+id/order_date"
-            app:layout_constraintStart_toEndOf="@+id/order_date" />
-
-
-        <TextView
-            android:id="@+id/order_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="10:15 am"
-            app:layout_constraintBaseline_toBaselineOf="@+id/at"
-            app:layout_constraintStart_toEndOf="@+id/at" />
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="40dp"
-            android:padding="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <View
-                android:id="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/order_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PEMESAN"
+                android:textColor="#B0B0B0"
+                android:textSize="10dp" />
+            <TextView
+                android:id="@+id/id_pemesan"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:background="@color/Gray"
+                android:layout_height="wrap_content"
+                android:text="Joko Kaiman"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/payable_amount_text"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
-
+                android:layout_marginTop="3dp"/>
             <TextView
-                android:id="@+id/payable_amount_text"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Total Harga : "
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/status"
-                app:layout_constraintEnd_toStartOf="@+id/total_amount" />
-
-            <TextView
-                android:id="@+id/total_amount"
+                android:id="@+id/order_item_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Rp250.000"
-                android:textSize="12sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/payable_amount_text"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:text="PESANAN"
+                android:textColor="#B0B0B0"
+                android:textSize="10dp"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/id_kamar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kopi Susu, Kopi Gula Aren"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="3dp"/>
+            <TextView
+                android:id="@+id/orderedOnText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WAKTU PEMBELIAN"
+                android:textColor="#B0B0B0"
+                android:textSize="10dp"
+                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/id_tanggal_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20/04/1997"
+                    android:textSize="14sp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:id="@+id/at"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="at"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:id="@+id/id_jam_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:15 am"
+                    android:layout_marginTop="3dp"/>
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/Gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/payable_amount_text"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view" />
+
+                <TextView
+                    android:id="@+id/payable_amount_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Total Harga : "
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/status"
+                    app:layout_constraintEnd_toStartOf="@+id/id_total_pembayaran"
+                    android:paddingTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/id_total_pembayaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Rp250.000"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/payable_amount_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingTop="10dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

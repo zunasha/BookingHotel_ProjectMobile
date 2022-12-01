@@ -50,9 +50,9 @@ public class menuAdapter extends BaseAdapter {
 
         Data data = items.get(position);
 
-        id.setText(data.getId());
+        id.setText("ID : "+data.getId());
         nama.setText(data.getNama());
-        harga.setText(data.getHarga());
+        harga.setText("Rp. "+data.getHarga());
         kategori.setText(data.getKategori());
 
         return convertView;

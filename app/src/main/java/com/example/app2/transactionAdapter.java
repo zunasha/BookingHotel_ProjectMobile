@@ -53,7 +53,7 @@ public class transactionAdapter extends BaseAdapter {
 
         id.setText(data.getId());
         nama.setText(data.getNama());
-        harga.setText(data.getHarga());
+        harga.setText("Rp. "+data.getHarga());
         kategori.setText(data.getKategori());
 
         return convertView;

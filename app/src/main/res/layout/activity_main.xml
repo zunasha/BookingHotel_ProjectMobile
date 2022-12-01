@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:paddingTop="20dp">
 
     <TextView
         android:id="@+id/textView"
@@ -15,7 +16,7 @@
         android:fontFamily="@font/rubik_bold"
         android:text="Selamat datang,"
         android:textColor="@color/SmoothBlack"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
@@ -26,30 +27,13 @@
         android:fontFamily="@font/rubik"
         android:text="Semangat kerjanya ya!"
         android:textColor="@color/SmoothBlack"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"/>
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sample_profile" />
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/icon_notification" />
 
     <!--Menu Dashboard-->
     <TableLayout
+        android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -75,11 +59,11 @@
                     app:cardCornerRadius="20dp">
 
                     <ImageView
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:paddingBottom="30dp"
-                        android:src="@drawable/illustration_menu" />
+                        android:src="@drawable/illustration_kamar" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -87,9 +71,9 @@
                         android:layout_marginTop="110dp"
                         android:fontFamily="@font/rubik_bold"
                         android:gravity="center"
-                        android:text="Menu"
+                        android:text="Kamar"
                         android:textColor="@color/white"
-                        android:textSize="26dp"
+                        android:textSize="24dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -98,7 +82,7 @@
                         android:layout_marginTop="170dp"
                         android:fontFamily="@font/rubik"
                         android:gravity="center"
-                        android:text="Lihat daftar menu"
+                        android:text="Lihat daftar kamar"
                         android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
@@ -115,7 +99,7 @@
                     app:cardCornerRadius="20dp">
 
                     <ImageView
-                        android:layout_width="120dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:paddingBottom="30dp"
@@ -127,9 +111,9 @@
                         android:layout_marginTop="110dp"
                         android:fontFamily="@font/rubik_bold"
                         android:gravity="center"
-                        android:text="Transaksi"
+                        android:text="Pemesanan"
                         android:textColor="@color/white"
-                        android:textSize="26dp"
+                        android:textSize="24dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -138,7 +122,7 @@
                         android:layout_marginTop="170dp"
                         android:fontFamily="@font/rubik"
                         android:gravity="center"
-                        android:text="Lakukan Transaksi"
+                        android:text="Buat pesanan"
                         android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
@@ -156,13 +140,14 @@
                 android:layout_marginRight="5dp">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/id_riwayat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/MorningBlue"
                     app:cardCornerRadius="20dp">
 
                     <ImageView
-                        android:layout_width="120dp"
+                        android:layout_width="105dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:paddingBottom="30dp"
@@ -172,21 +157,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="110dp"
+                        android:fontFamily="@font/rubik_bold"
                         android:gravity="center"
                         android:text="Riwayat"
                         android:textColor="@color/white"
-                        android:textSize="26dp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/rubik_bold"/>
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="170dp"
+                        android:fontFamily="@font/rubik"
                         android:gravity="center"
-                        android:text="Lihat riwayat transaksi"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/rubik"/>
+                        android:text="Riwayat pemesanan"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
             <RelativeLayout
@@ -195,6 +180,7 @@
                 android:layout_weight="1">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/id_logout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/LightMorningBlue"
@@ -205,31 +191,44 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:paddingBottom="30dp"
-                        android:src="@drawable/illustration_pengaturan" />
+                        android:src="@drawable/illustration_logout" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="110dp"
+                        android:fontFamily="@font/rubik_bold"
                         android:gravity="center"
-                        android:text="Pengaturan"
+                        android:text="Logout"
                         android:textColor="@color/white"
-                        android:textSize="26dp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/rubik_bold"/>
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="170dp"
+                        android:fontFamily="@font/rubik"
                         android:gravity="center"
-                        android:text="Buka pengaturan"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/rubik"/>
+                        android:text="Keluar akun"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
         </TableRow>
     </TableLayout>
     <!--End Menu Dashboard-->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo_black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

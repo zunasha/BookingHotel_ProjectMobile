@@ -23,33 +23,63 @@
             android:layout_height="wrap_content"
             android:hint="Nama"
             android:textColorHint="@color/Gray"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:editable="false"/>
         <EditText
             android:id="@+id/id_harga_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Harga"
             android:textColorHint="@color/Gray"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:editable="false"/>
+
         <EditText
             android:id="@+id/id_kategori_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Kategori"
             android:textColorHint="@color/Gray"
-            android:layout_marginTop="10dp"/>
+            android:editable="false"/>
+
         <EditText
             android:id="@+id/id_lama_booking_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Lama boking kamar (per jam)"
+            android:hint="Lama Booking Kamar (Per Hari)"
             android:textColorHint="@color/Gray"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:inputType="number"/>
         <EditText
-            android:id="@+id/id_biaya_booking_kamar"
+            android:id="@+id/id_jam_booking_kamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Biaya"
+            android:hint="Jam Booking"
+            android:textColorHint="@color/Gray"
+            android:layout_marginTop="10dp"
+            android:inputType="time"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+        <EditText
+            android:id="@+id/id_tanggal_booking_kamar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tanggal Booking"
+            android:textColorHint="@color/Gray"
+            android:layout_marginTop="10dp"
+            android:inputType="date"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+        <EditText
+            android:id="@+id/id_pemesan_booking_kamar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Pemesan"
             android:textColorHint="@color/Gray"
             android:layout_marginTop="10dp"/>
     </LinearLayout>

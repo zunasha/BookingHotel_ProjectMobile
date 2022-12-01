@@ -268,7 +268,7 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
         View viewDialog = inflater.inflate(R.layout.form_edit_menu, null);
         dialogForm.setView(viewDialog);
         dialogForm.setCancelable(true);
-        dialogForm.setTitle("Edit Menu");
+        dialogForm.setTitle("Edit Kamar");
 
         etId = (EditText) viewDialog.findViewById(R.id.id_editId);
         etNama = (EditText) viewDialog.findViewById(R.id.id_editNama);

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,33 +13,17 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="180dp"-->
-            <!--                android:layout_height="180dp"-->
-            <!--                android:layout_marginStart="-35dp"-->
-            <!--                android:layout_marginTop="-50dp"-->
-            <!--                android:src="@drawable/circle_login" />-->
-
-            <ImageView
-                android:id="@+id/ic_app"
-                android:layout_width="320dp"
-                android:layout_height="200dp"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="100dp"
-                android:src="@drawable/logo_black" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ic_app"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="56dp"
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/id_usernameLogin"
+                    android:id="@+id/id_usernameRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username"
@@ -47,7 +31,16 @@
                     android:textColorHint="@android:color/darker_gray" />
 
                 <EditText
-                    android:id="@+id/id_passwordLogin"
+                    android:id="@+id/id_emailRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/id_passwordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -55,8 +48,34 @@
                     android:inputType="textPassword"
                     android:textColorHint="@android:color/darker_gray" />
 
+                <EditText
+                    android:id="@+id/id_confPasswordRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Konfirmasi Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="@android:color/darker_gray" />
+
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/id_buttonLoginLogin"
+                    android:id="@+id/id_buttonRegisterRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:minHeight="58dp"
+                    android:text="Register"
+                    app:backgroundTint="@color/MorningBlue"
+                    app:cornerRadius="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Sudah punya akun?" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/id_buttonLoginRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -65,23 +84,6 @@
                     app:backgroundTint="@color/Maize"
                     app:cornerRadius="20dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:text="Belum punya akun?" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/id_buttonRegisterLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="32dp"
-                    android:minHeight="58dp"
-                    android:text="Register"
-                    app:cornerRadius="20dp"
-                    app:backgroundTint="@color/MorningBlue"/>
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

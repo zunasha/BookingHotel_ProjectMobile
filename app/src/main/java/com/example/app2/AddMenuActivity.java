@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,8 +24,9 @@ import java.util.Map;
 
 public class AddMenuActivity extends AppCompatActivity {
 
-    TextView tvTambah, tvStatus;
+    TextView tvTambah;
     EditText etAddNama, etAddHarga, etAddKategori;
+    private ImageView ivArrowBack;
 
     public static final String url = "http://192.168.112.3/CRUDVolley/projectmobile/insert.php";
 
@@ -33,10 +37,18 @@ public class AddMenuActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         tvTambah = (TextView) findViewById(R.id.id_buttonTambah);
-        tvStatus = (TextView) findViewById(R.id.id_status);
         etAddNama = (EditText) findViewById(R.id.id_addNama);
         etAddHarga = (EditText) findViewById(R.id.id_addHarga);
         etAddKategori = (EditText) findViewById(R.id.id_addKategori);
+        ivArrowBack = findViewById(R.id.id_arrowBack);
+
+        ivArrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent move = new Intent(AddMenuActivity.this, MenuActivity.class);
+                startActivity(move);
+            }
+        });
 
         tvTambah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,12 +67,12 @@ public class AddMenuActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        tvStatus.setText(response);
+                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                tvStatus.setText("error tidak dapat di proses");
+                Toast.makeText(getApplicationContext(), "error tidak dapat di proses", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

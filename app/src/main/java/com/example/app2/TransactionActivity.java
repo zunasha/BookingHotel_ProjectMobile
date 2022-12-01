@@ -6,6 +6,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,12 +39,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class TransactionActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+
+    private ImageView ivArrowBack;
 
     //Tampil Menu
     public static final String URL_SELECT = "http://192.168.112.3/CRUDVolley/projectmobile/select.php";
@@ -50,14 +63,32 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
     public static final String URL_EDIT = "http://192.168.112.3/CRUDVolley/projectmobile/edit.php";
     public static final String URL_PESAN = "http://192.168.112.3/CRUDVolley/projectmobile/pesan.php";
     LayoutInflater inflater;
-    EditText etId, etNama, etHarga, etKategori, etLamaBooking, etBiayaBooking;
-    String s_id, s_nama, s_harga, s_kategori, s_lamaBooking, s_biayaBooking;
+    EditText etId, etNama, etHarga, etKategori, etLamaBooking, etBiayaBooking, etTanggalBooking, etJamBooking, etNamaPemesan;
+    String s_id, s_nama, s_harga, s_kategori, s_lamaBooking, s_biayaBooking, s_tanggalBooking, s_jamBooking, s_namaPemesan;
     //End Pesan Kamar
+
+    //Date Picker
+    final Calendar myCalendar= Calendar.getInstance();
+    //End Date Picker
+
+    //Time Picker
+
+    //End Time Picker
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
+        getSupportActionBar().hide();
+
+        ivArrowBack = findViewById(R.id.id_arrowBack);
+        ivArrowBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent move = new Intent(TransactionActivity.this, MainActivity.class);
+                startActivity(move);
+            }
+        });
 
         //Tampil Menu
         swipe = (SwipeRefreshLayout) findViewById(R.id.id_swipe_transaksi);
@@ -102,6 +133,7 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
             }
         });
         //End Pesan Kamar
+
     }
 
     //Tampil Menu
@@ -215,7 +247,10 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
         etHarga = (EditText) viewDialog.findViewById(R.id.id_harga_kamar);
         etKategori = (EditText) viewDialog.findViewById(R.id.id_kategori_kamar);
         etLamaBooking = (EditText) viewDialog.findViewById(R.id.id_lama_booking_kamar);
-        etBiayaBooking = (EditText) viewDialog.findViewById(R.id.id_biaya_booking_kamar);
+//        etBiayaBooking = (EditText) viewDialog.findViewById(R.id.id_biaya_booking_kamar);
+        etTanggalBooking = (EditText) viewDialog.findViewById(R.id.id_tanggal_booking_kamar);
+        etJamBooking = (EditText) viewDialog.findViewById(R.id.id_jam_booking_kamar);
+        etNamaPemesan = (EditText) viewDialog.findViewById(R.id.id_pemesan_booking_kamar);
 
         if (id.isEmpty()) {
             etId.setText(null);
@@ -229,6 +264,47 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
             etKategori.setText(kategori);
         }
 
+        //Date Picker
+        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+
+                String myFormat="dd/MM/yy";
+                SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+                etTanggalBooking.setText(dateFormat.format(myCalendar.getTime()));
+            }
+        };
+        etTanggalBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(TransactionActivity.this,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        //End Date Picker
+
+        //Time Picker
+        etJamBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
+                int minute = myCalendar.get(Calendar.MINUTE);
+                // time picker dialog
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(TransactionActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        etJamBooking.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true); //Yes 24-hour time mode
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+        //End Time Picker
+
         dialogForm.setPositiveButton(button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
@@ -237,6 +313,9 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
                 s_harga = etHarga.getText().toString();
                 s_kategori = etKategori.getText().toString();
                 s_lamaBooking = etLamaBooking.getText().toString();
+                s_tanggalBooking = etTanggalBooking.getText().toString();
+                s_jamBooking = etJamBooking.getText().toString();
+                s_namaPemesan = etNamaPemesan.getText().toString();
 
                 int a = Integer.parseInt(s_harga);
                 int b = Integer.parseInt(s_lamaBooking);
@@ -267,6 +346,8 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(TransactionActivity.this, response, Toast.LENGTH_LONG);
+                        Intent move = new Intent(TransactionActivity.this, HistoryActivity.class);
+                        startActivity(move);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -284,6 +365,9 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
                 params.put("kategori", s_kategori);
                 params.put("lamaPesan", s_lamaBooking);
                 params.put("biaya", s_biayaBooking);
+                params.put("tanggalBooking", s_tanggalBooking);
+                params.put("jamBooking", s_jamBooking);
+                params.put("pemesan", s_namaPemesan);
                 return params;
             }
         };
@@ -291,8 +375,6 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
     }
-
-
 
     //End Pesan Kamar
 }
