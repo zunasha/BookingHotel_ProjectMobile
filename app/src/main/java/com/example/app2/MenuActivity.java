@@ -87,7 +87,7 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
             }
         });
 
-        //Tampil Menu
+        //Tampil Kamar
         swipe = (SwipeRefreshLayout) findViewById(R.id.id_swipe);
         list = (ListView) findViewById(R.id.id_listView);
 
@@ -105,9 +105,9 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
                 callVolley();
             }
         });
-        //End Tampil Menu
+        //End Tampil Kamar
 
-        //Delete Menu
+        //Delete Kamar
        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -133,9 +133,9 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
                 return false;
             }
         });
-        //End Delete Menu
+        //End Delete Kamar
     }
-    //Tampil Menu
+    //Tampil Kamar
     @Override
     public void onRefresh(){
         itemList.clear();
@@ -188,9 +188,9 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
         mRequestQueue.add(jArr);
 
     }
-    //End Tampil Menu
+    //End Tampil Kamar
 
-    //Delete Menu
+    //Delete Kamar
     public void hapusData(String id) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DELETE,
                 new Response.Listener<String>() {
@@ -218,9 +218,9 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
     }
-    //End Delete Menu
+    //End Delete Kamar
 
-    //Edit Menu
+    //Edit Kamar
     public void editData(String id){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
                 new Response.Listener<String>() {

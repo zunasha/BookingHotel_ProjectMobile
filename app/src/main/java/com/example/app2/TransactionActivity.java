@@ -111,25 +111,12 @@ public class TransactionActivity extends AppCompatActivity implements SwipeRefre
         //End Tampil Menu
 
         //Pesan Kamar
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 final String idx = itemList.get(position).getId();
-                final CharSequence[] pilihanAksi = {"pesan"};
-                AlertDialog.Builder dialog = new AlertDialog.Builder(TransactionActivity.this);
-                dialog.setItems(pilihanAksi, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        switch (which) {
-                            case 0:
-                                //jika dipilih pesan
-                                pesanKamar(idx);
-//                                callVolley();
-                                break;
-                        }
-                    }
-                }).show();
-                return false;
+                pesanKamar(idx);
+//                callVolley();
             }
         });
         //End Pesan Kamar
